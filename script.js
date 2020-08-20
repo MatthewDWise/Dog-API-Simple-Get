@@ -4,7 +4,8 @@ function getDogImage(numberInput) {
     if (!numberInput){
         fetch("https://dog.ceo/api/breeds/image/random/3")
         .then(response => response.json())
-        .then(responseJson => console.log(responseJson));        
+        .then(responseJson => displayResults(responseJson))
+        .catch(error => alert('Something went wrong.  Try again later'));        
     } else if (numberInput > 50) {
         return alert ("50 is the maximum number of pups, please choose again!");
     } else if (numberInput == 0) {
@@ -12,8 +13,14 @@ function getDogImage(numberInput) {
     } else {
         fetch(`https://dog.ceo/api/breeds/image/random/${numberInput}`)
         .then(response => response.json())
-        .then(responseJson => console.log(responseJson));
+        .then(responseJson => displayResults(responseJson));
     }
+}
+
+function displayResults(responseJson){
+    console.log(responseJson);
+    $('.results-img').replaceWith(`<img src="${responseJson.message}" class = "results-img">`)
+    $('.results').removeClass('hidden');
 }
 
 function watchFormInput() {
