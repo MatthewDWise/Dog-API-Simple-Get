@@ -1,30 +1,43 @@
-"use strict";
+"use strict"
 
-function getDogImage(numberInput) {
-    if (!numberInput){
-        fetch("https://dog.ceo/api/breeds/image/random/3")
-        .then(response => response.json())
-        .then(responseJson => console.log(responseJson));        
-    } else if (numberInput > 50) {
-        return alert ("50 is the maximum number of pups, please choose again!");
-    } else if (numberInput == 0) {
-        return alert("Minimum number of pups is 1!");
-    } else {
-        fetch(`https://dog.ceo/api/breeds/image/random/${numberInput}`)
-        .then(response => response.json())
-        .then(responseJson => console.log(responseJson));
-    }
+const APIKEY = "&api_key=VA54fQdIr8jFQF7ulG4JDMJOEpACIEKGf717vrRt"
+const URL = "https://developer.nps.gov/api/v1/"
+var chosenState = ""
+var maxResults = 0
+
+function pageLoad(){
+    watchForm();
 }
 
-function watchFormInput() {
-    $("#doggie-form").submit(event => {
-        event.preventDefault();
-        let userNumberInput = $("#number-dog").val();
-        getDogImage(userNumberInput);
+function submitRequest(chosenState, masResults){
+    fetch(URL + chosenState + maxResults + APIKEY)
+    .then(response => response.json())
+    .then(responseJson => displayResults(reponseJson))
+    .catch(error => alert("Unable to process request at this time.  Please check your entry and try again."))
+}
+
+function displayResults(){
+    console.log(responseJson);
+    $('#results-holder').empty();
+    let responseDisplay = "";
+    responseJson.forEach(stateInfo => {
+        responseDisplay += `<div class = "panel"><h2>Park Name:${park.fullname}</h2><h2>Website Link:<a href = "${park.url}"></a></h2>`
     });
 }
 
-$(function(){
-    console.log("App loaded!  Watiing for Submission!");
-    watchFormInput();
-});
+function handleUserChoise(){
+    maxResults = '&limit='+$('#maxResults').val();
+    chosenState = 'parks?stateCode='+$('#state-select').val();
+    submitRequest(chosenState, maxResults);
+    console.log(URL + chosenState + maxResults + APIKEY)'
+}
+
+function watchForm() {
+    $('#search-form').submit(event => {
+        console.log("submission received!")'
+        event.preventDefault();
+        handleUserChoice();
+    });
+}
+
+$(pageLoad)
