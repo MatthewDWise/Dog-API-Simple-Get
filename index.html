@@ -7,20 +7,22 @@
     <title>Dog API simple GET</title>
 </head>
 <body>
-    <section id ="container">
-        <h1 class = "doggoHeading">Fetch the dogs!</h1>
-        
-        <form id ="doggie-form">
-            <div class="form-style">
-                <h5>How many dog photos do you want?  Choose a number from 1 to 50!</h5>
-                <input type="text" id ="number-dog" class = "form-style" placeholder = "3"/>
-                </div>
-                <div class = "button">
-                    <input type = "submit" id="get" class = "fetch-button" value = "Fetch!"/>
-                </div>
+    <main role = "main">
+      <form id = "search-form">
+      <div class = "container">
+        <h3>Choose States to Search</h3>
+        <div class = "states container">
+       <input type = "text" id = "state-select">
+        </div>
+        <p class = "resultsMax">How many results would you like to see?  Max 50</p>
+        <input type = "number" id = "maxResults" placeholder = "10" min = 1  max = 50>
+        <button type = "submit" label = "Submit">Submit</button>
         </form>
-    </section>
+        <section class = "results-display hidden" id = "results-holder">
+          <ul></ul>
+          </section>
+
     <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src = "script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
