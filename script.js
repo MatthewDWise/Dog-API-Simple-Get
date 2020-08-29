@@ -29,7 +29,7 @@ function handleUserChoise(){
     maxResults = '&limit='+$('#maxResults').val();
     chosenState = 'parks?stateCode='+$('#state-select').val();
     submitRequest(chosenState, maxResults);
-    console.log(URL + chosenState + maxResults + APIKEY)'
+    console.log(URL + chosenState + maxResults + APIKEY)
 }
 
 function watchForm() {
