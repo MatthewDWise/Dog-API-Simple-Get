@@ -25,7 +25,7 @@ function displayResults(){
     });
 }
 
-function handleUserChoise(){
+function handleUserChoice(){
     maxResults = '&limit='+$('#maxResults').val();
     chosenState = 'parks?stateCode='+$('#state-select').val();
     submitRequest(chosenState, maxResults);
