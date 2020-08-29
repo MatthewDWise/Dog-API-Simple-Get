@@ -34,7 +34,7 @@ function handleUserChoise(){
 
 function watchForm() {
     $('#search-form').submit(event => {
-        console.log("submission received!")'
+        console.log("submission received!")
         event.preventDefault();
         handleUserChoice();
     });
